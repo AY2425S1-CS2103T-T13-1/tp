@@ -11,7 +11,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Remark;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.List; 
+import java.util.List;
 
 /**
  * Changes the remark of an existing person in the address book.
