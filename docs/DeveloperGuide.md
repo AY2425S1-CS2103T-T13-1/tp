@@ -278,7 +278,6 @@ _{Explain here how the data archiving feature will be implemented}_
     - Skilled at typing and prefers keyboard shortcuts over mouse interactions for speed.
     - Comfortable with using command-line interfaces (CLI) for fast data entry and retrieval.
 
-    
 #### **Value Proposition:**
 
 MedConnect offers a **streamlined contact management system** tailored for healthcare administrators. Its key features include:
@@ -337,7 +336,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ---
 ### Use Case: Add a New Contact
 
-**System:** MedConnect  
+**System:** MedConnect
 **Actor:** Healthcare Administrator
 
 #### **Main Success Scenario (MSS):**
@@ -378,7 +377,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use Case: Delete a Contact
 
-**System:** MedConnect  
+**System:** MedConnect
 **Actor:** Healthcare Administrator
 
 
@@ -409,7 +408,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ---
 ### Use Case: View Emergency Contacts
 
-**System:** MedConnect  
+**System:** MedConnect
 **Actor:** Healthcare Administrator
 
 #### **Main Success Scenario (MSS):**
@@ -438,7 +437,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use Case: Archive Outdated Contacts
 
-**System:** MedConnect  
+**System:** MedConnect
 **Actor:** Healthcare Administrator
 
 #### **Main Success Scenario (MSS):**
@@ -465,7 +464,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use Case: Multiple Contact Methods
 
-**System:** MedConnect  
+**System:** MedConnect
 **Actor:** Healthcare Administrator
 
 
@@ -498,7 +497,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use Case: Delete Outdated Contacts (Hard Delete)
 
-**System:** MedConnect  
+**System:** MedConnect
 **Actor:** Healthcare Administrator
 
 #### **Main Success Scenario (MSS):**
@@ -523,56 +522,56 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   **Use case ends.**
 ---
 
-### Non-Functional Requirements (NFRs) 
+### Non-Functional Requirements (NFRs)
 
 #### 1. Performance Requirements:
-- **Responsiveness:**  
+- **Responsiveness:**
   The system should respond to user commands (e.g., adding, updating, or viewing contacts) within **2 seconds** for typical operations under normal usage conditions (i.e., up to 1000 contacts in the database).
 
-- **Scalability:**  
+- **Scalability:**
   MedConnect should support operations with **up to 5000 contacts** without performance degradation. Basic operations such as retrieving or adding contacts should not exceed a response time of **3 seconds** under this load.
 
 #### 2. Reliability and Availability:
-- **System Uptime:**  
+- **System Uptime:**
   MedConnect must be available for use at least **99% of the time**, especially during hospital operating hours (24/7 access). Regular maintenance should be scheduled during off-peak times.
 
-- **Disaster Recovery and Backup:**  
+- **Disaster Recovery and Backup:**
   Contact data must be backed up **daily** to prevent data loss. The system should be able to recover from backup within **2 hours** of a failure.
 
 #### 3. Usability Requirements:
-- **Typing Efficiency:**  
+- **Typing Efficiency:**
   The system should be optimized for keyboard-only interactions. A user familiar with the system should be able to complete key operations (e.g., adding a new contact, viewing emergency contacts) in less than **30 seconds** using only the keyboard.
 
-- **Error Handling and Feedback:**  
+- **Error Handling and Feedback:**
   The system must provide **immediate feedback** (within 1 second) when an error occurs, such as invalid input or missing fields. The user should be able to correct errors without restarting the operation.
 
 #### 4. Security and Privacy Requirements:
-- **Data Encryption:**  
+- **Data Encryption:**
   All sensitive patient and contact information must be encrypted when stored locally. The system should implement industry-standard encryption (e.g., AES-256) for both storage and transmission of data.
 
-- **User Authentication (Future Consideration):**  
+- **User Authentication (Future Consideration):**
   If the system evolves to handle multiple users, it must implement **role-based access control** with password authentication. Healthcare administrators should have different access levels than general staff.
 
 #### 5. Data and Storage Requirements:
-- **Human-Editable File Format:**  
+- **Human-Editable File Format:**
   Contact information should be stored in a **human-readable and editable format** (e.g., `.txt` or `.csv`) so that administrators can manually access and modify data if needed.
 
-- **Data Integrity:**  
+- **Data Integrity:**
   The system must ensure that no data is lost or corrupted during common operations (e.g., adding, updating, or deleting contacts). **Transaction-like behavior** must be implemented to ensure all data operations either succeed fully or fail without partially corrupting data.
 
 #### 6. Compatibility and Portability:
-- **Cross-Platform Support:**  
+- **Cross-Platform Support:**
   MedConnect must be compatible with **mainstream operating systems** (Windows, macOS, Linux) and function seamlessly on systems with **Java 17 or higher** installed.
 
 #### 7. Compliance Requirements:
-- **Healthcare Data Regulations:**  
+- **Healthcare Data Regulations:**
   MedConnect must adhere to local and international healthcare data protection regulations, such as **HIPAA** in the US, or similar regulations in other regions, ensuring the privacy and security of sensitive medical information.
 
 #### 8. Maintainability and Extensibility:
-- **Modular Design:**  
+- **Modular Design:**
   The system must be designed with a modular structure, allowing future extensions such as additional data fields or user roles without requiring significant rework.
 
-- **Testability:**  
+- **Testability:**
   MedConnect must be **easily testable**, with automated tests that can cover at least **80% of the codebase**. Each core feature (e.g., adding a contact, deleting outdated contacts) should have dedicated test cases.
 ---
 

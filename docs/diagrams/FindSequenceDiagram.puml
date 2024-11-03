@@ -2,31 +2,23 @@
 
 actor User
 participant FindCommand
-participant Model
 participant ModelManager
 
 User -> FindCommand: execute(Model)
 activate FindCommand
 
-FindCommand -> Model: updateFilteredPersonList(Predicate)
-activate Model
-
-Model -> ModelManager: updateFilteredPersonList(Predicate)
+FindCommand -> ModelManager: updateFilteredPersonList(Predicate)
 activate ModelManager
 
+ModelManager -> ModelManager: updateFilteredPersonList(Predicate)
+
 ModelManager -> ModelManager: setPredicate(Predicate)
+ModelManager --> FindCommand:
 
-
-ModelManager --> Model:
+FindCommand -> ModelManager: getFilteredPersonList()
+ModelManager -> ModelManager: size()
+ModelManager --> FindCommand: ObservableList<Person>
 deactivate ModelManager
-
-
-Model --> FindCommand:
-
-FindCommand -> Model: getFilteredPersonList()
-Model -> Model: size()
-Model --> FindCommand: ObservableList<Person>
-deactivate Model
 
 FindCommand --> User: CommandResult
 deactivate FindCommand
