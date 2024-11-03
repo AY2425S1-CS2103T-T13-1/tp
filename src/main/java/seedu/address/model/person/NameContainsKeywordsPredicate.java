@@ -22,7 +22,6 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     public static final String VALIDATION_REGEX = "[\\p{Alpha}][\\p{Alpha} ]*";
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
-        checkArgument(keywords.stream().allMatch(this::isValidKeyword), KEYWORD_CONSTRAINTS);
         this.keywords = keywords;
     }
 
@@ -35,7 +34,7 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     /*
      * Returns true if the keyword is valid and only contains alphabetical characters.
      */
-    public boolean isValidKeyword(String keyword) {
+    public boolean isValidKeywords(String keyword) {
         return keyword.matches(VALIDATION_REGEX);
     }
 
