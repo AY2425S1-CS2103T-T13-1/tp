@@ -6,13 +6,23 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 /**
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
+    public static final String KEYWORD_CONSTRAINTS = "Keywords should only contain alphabetical characters";
+
+    /*
+     * The keywords must only contain alphabetical characters.
+     */
+    public static final String VALIDATION_REGEX = "[\\p{Alpha}][\\p{Alpha} ]*";
+
     public NameContainsKeywordsPredicate(List<String> keywords) {
+        checkArgument(keywords.stream().allMatch(this::isValidKeyword), KEYWORD_CONSTRAINTS);
         this.keywords = keywords;
     }
 
@@ -20,6 +30,13 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         return keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+    }
+
+    /*
+     * Returns true if the keyword is valid and only contains alphabetical characters.
+     */
+    public boolean isValidKeyword(String keyword) {
+        return keyword.matches(VALIDATION_REGEX);
     }
 
     @Override
