@@ -120,6 +120,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public Path getArchiveDirectoryPath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void archiveAddressBook(Filename filename) {
             throw new AssertionError("This method should not be called.");
         }

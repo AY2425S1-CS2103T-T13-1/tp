@@ -23,6 +23,7 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddEmergencyContactCommand;
 import seedu.address.logic.commands.ArchiveCommand;
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.DeleteArchiveCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteCommand.DeleteCommandDescriptor;
 import seedu.address.logic.commands.EditCommand;
@@ -128,6 +129,11 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_loadArchive() throws Exception {
         assertTrue(parser.parseCommand(LoadArchiveCommand.COMMAND_WORD) instanceof LoadArchiveCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteArchive() throws Exception {
+        assertTrue(parser.parseCommand(DeleteArchiveCommand.COMMAND_WORD) instanceof DeleteArchiveCommand);
     }
 
     @Test

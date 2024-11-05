@@ -24,6 +24,7 @@ import seedu.address.model.person.Person;
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+    public static final String ARCHIVE_DIRNAME = "archive";
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     // Stack to store the history of address book states for undo functionality
@@ -98,6 +99,20 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Path getArchiveDirectoryPath() {
+        Path source = this.getAddressBookFilePath();
+        assert source != null : "Address book file path is null";
+
+        Path archiveDir = Paths.get(source.getParent().toString(), ARCHIVE_DIRNAME);
+
+        if (!Files.exists(archiveDir)) {
+            logger.info("No archive directory found.");
+        }
+
+        return archiveDir;
+    }
+
+    @Override
     public void archiveAddressBook(Filename filename) throws IOException {
         Path source = this.getAddressBookFilePath();
         assert source != null : "Address book file path is null";
@@ -106,7 +121,7 @@ public class ModelManager implements Model {
         String timestamp = LocalDateTime.now().format(formatter);
         String archiveFilename = source.getFileName().toString().replace(".json", "") + "-"
                 + timestamp + (filename.toString().isEmpty() ? "" : "-" + filename) + ".json";
-        Path destination = Paths.get(source.getParent().toString(), "archive", archiveFilename);
+        Path destination = Paths.get(this.getArchiveDirectoryPath().toString(), archiveFilename);
 
         Files.createDirectories(destination.getParent());
         Files.copy(source, destination, REPLACE_EXISTING);

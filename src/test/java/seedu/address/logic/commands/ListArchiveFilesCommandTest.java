@@ -21,8 +21,7 @@ public class ListArchiveFilesCommandTest {
 
     @BeforeEach
     public void setUp() throws IOException {
-        archiveDir = Files.createDirectories(Path.of(model.getAddressBookFilePath().getParent().toString(),
-                "archive"));
+        archiveDir = Files.createDirectories(model.getArchiveDirectoryPath());
     }
 
     @AfterEach

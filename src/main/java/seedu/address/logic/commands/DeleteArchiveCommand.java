@@ -10,29 +10,26 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.filename.Filename;
-import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.storage.JsonAddressBookStorage;
 
 /**
- * Loads an archive file and sets it as the current address book.
+ * Deletes an archive file.
  */
-public class LoadArchiveCommand extends Command {
-    public static final String COMMAND_WORD = "loadArchive";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Loads an archive file.\n"
+public class DeleteArchiveCommand extends Command {
+    public static final String COMMAND_WORD = "deleteArchive";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes an archive file.\n"
             + "Parameters: FILENAME\n"
             + "Example: " + COMMAND_WORD + "addressbook-20241023_114324-example.json";
 
-    public static final String MESSAGE_SUCCESS = "Loaded archive file: %1$s";
+    public static final String MESSAGE_SUCCESS = "Deleted archive file: %1$s";
     public static final String MESSAGE_NOT_FOUND = "Archive file not found: %1$s";
-    public static final String MESSAGE_FAILURE = "Failed to load archive file: %1$s";
+    public static final String MESSAGE_FAILURE = "Failed to delete archive file: %1$s";
 
-    private static final Logger logger = LogsCenter.getLogger(LoadArchiveCommand.class);
+    private static final Logger logger = LogsCenter.getLogger(DeleteArchiveCommand.class);
 
     private final Filename archiveFilename;
 
-    public LoadArchiveCommand(Filename archiveFilename) {
+    public DeleteArchiveCommand(Filename archiveFilename) {
         this.archiveFilename = archiveFilename;
     }
 
@@ -47,15 +44,13 @@ public class LoadArchiveCommand extends Command {
         }
 
         try {
-            JsonAddressBookStorage storage = new JsonAddressBookStorage(archiveFile);
-            ReadOnlyAddressBook addressBook = storage.readAddressBook().orElseThrow(IOException::new);
-            model.setAddressBook(addressBook);
-        } catch (IOException | DataLoadingException e) {
-            logger.severe("Failed to load archive file: " + e.getMessage());
+            Files.deleteIfExists(archiveFile);
+        } catch (IOException e) {
+            logger.severe("Failed to delete archive file: " + e.getMessage());
             return new CommandResult(String.format(MESSAGE_FAILURE, archiveFilename));
         }
 
-        logger.info("Loaded archive file: " + archiveFilename);
+        logger.info("Deleted archive file: " + archiveFilename);
         return new CommandResult(String.format(MESSAGE_SUCCESS, archiveFilename));
     }
 
@@ -66,11 +61,11 @@ public class LoadArchiveCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof LoadArchiveCommand)) {
+        if (!(other instanceof DeleteArchiveCommand)) {
             return false;
         }
 
-        LoadArchiveCommand otherDeleteCommand = (LoadArchiveCommand) other;
+        DeleteArchiveCommand otherDeleteCommand = (DeleteArchiveCommand) other;
         return archiveFilename.equals(otherDeleteCommand.archiveFilename);
     }
 }

@@ -59,6 +59,11 @@ public interface Model {
     ReadOnlyAddressBook getAddressBook();
 
     /**
+     * Returns the archive directory path.
+     */
+    Path getArchiveDirectoryPath();
+
+    /**
      * Archives the address book.
      *
      * @param filename the name of the file to archive the address book to.

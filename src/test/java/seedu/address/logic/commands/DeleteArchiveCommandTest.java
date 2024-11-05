@@ -22,7 +22,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 
-public class LoadArchiveCommandTest {
+public class DeleteArchiveCommandTest {
     private Path archiveDir;
     private final Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
@@ -50,19 +50,19 @@ public class LoadArchiveCommandTest {
     public void execute_archiveFileNotFound_success() throws IOException {
         Files.deleteIfExists(archiveDir);
         Filename filename = new Filename("no_archive.json");
-        String expectedMessage = String.format(LoadArchiveCommand.MESSAGE_NOT_FOUND, filename);
-        assertCommandSuccess(new LoadArchiveCommand(filename), model, expectedMessage, model);
+        String expectedMessage = String.format(DeleteArchiveCommand.MESSAGE_NOT_FOUND, filename);
+        assertCommandSuccess(new DeleteArchiveCommand(filename), model, expectedMessage, model);
     }
 
     @Test
-    public void execute_errorLoadingArchiveFile_failure() throws IOException {
+    public void execute_emptyArchiveFile_success() throws IOException {
         // Create empty archive file
-        Filename filename = new Filename("error_archive.json");
+        Filename filename = new Filename("empty_archive.json");
         Path archiveFilepath = Paths.get(archiveDir.toString(), filename.toString());
         Files.createFile(archiveFilepath);
 
-        String expectedMessage = String.format(LoadArchiveCommand.MESSAGE_FAILURE, filename);
-        assertCommandSuccess(new LoadArchiveCommand(filename), model, expectedMessage, model);
+        String expectedMessage = String.format(DeleteArchiveCommand.MESSAGE_SUCCESS, filename);
+        assertCommandSuccess(new DeleteArchiveCommand(filename), model, expectedMessage, model);
     }
 
     @Test
@@ -77,29 +77,29 @@ public class LoadArchiveCommandTest {
         Path archiveFilepath = Paths.get(archiveDir.toString(), filename.toString());
         Files.copy(source, archiveFilepath, REPLACE_EXISTING);
 
-        String expectedMessage = String.format(LoadArchiveCommand.MESSAGE_SUCCESS, filename);
-        assertCommandSuccess(new LoadArchiveCommand(filename), model, expectedMessage, model);
+        String expectedMessage = String.format(DeleteArchiveCommand.MESSAGE_SUCCESS, filename);
+        assertCommandSuccess(new DeleteArchiveCommand(filename), model, expectedMessage, model);
     }
 
     @Test
     public void equals() {
-        LoadArchiveCommand loadArchiveFirstCommand = new LoadArchiveCommand(new Filename("test1"));
-        LoadArchiveCommand loadArchiveSecondCommand = new LoadArchiveCommand(new Filename("test2"));
+        DeleteArchiveCommand deleteArchiveFirstCommand = new DeleteArchiveCommand(new Filename("test1"));
+        DeleteArchiveCommand deleteArchiveSecondCommand = new DeleteArchiveCommand(new Filename("test2"));
 
         // same object -> returns true
-        assertTrue(loadArchiveFirstCommand.equals(loadArchiveFirstCommand));
+        assertTrue(deleteArchiveFirstCommand.equals(deleteArchiveFirstCommand));
 
         // same values -> returns true
-        LoadArchiveCommand loadArchiveFirstCommandCopy = new LoadArchiveCommand(new Filename("test1"));
-        assertTrue(loadArchiveFirstCommand.equals(loadArchiveFirstCommandCopy));
+        DeleteArchiveCommand deleteArchiveFirstCommandCopy = new DeleteArchiveCommand(new Filename("test1"));
+        assertTrue(deleteArchiveFirstCommand.equals(deleteArchiveFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(loadArchiveFirstCommand.equals("test1"));
+        assertFalse(deleteArchiveFirstCommand.equals("test1"));
 
         // null -> returns false
-        assertFalse(loadArchiveFirstCommand.equals(null));
+        assertFalse(deleteArchiveFirstCommand.equals(null));
 
         // different command -> returns false
-        assertFalse(loadArchiveFirstCommand.equals(loadArchiveSecondCommand));
+        assertFalse(deleteArchiveFirstCommand.equals(deleteArchiveSecondCommand));
     }
 }

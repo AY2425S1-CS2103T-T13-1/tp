@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -30,10 +29,7 @@ public class ListArchiveFilesCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        Path source = model.getAddressBookFilePath();
-        assert source != null : "Address book file path is null";
-
-        Path archiveDir = Paths.get(source.getParent().toString(), "archive");
+        Path archiveDir = model.getArchiveDirectoryPath();
         if (!Files.exists(archiveDir)) {
             logger.info("No archive directory found.");
             return new CommandResult(MESSAGE_NO_ARCHIVE);
