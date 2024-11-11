@@ -119,6 +119,7 @@ By following these sections, you can quickly find the information you need and m
 
 * Items in square brackets `[ ] ` are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  * Please look at [known issues](#known-issues) for square brackets `[ ]` in general.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
@@ -541,6 +542,7 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+3. **Square brackets to indicate a command is optional is not displayed in suggestion feature. Users need to refer to HelpGuide or UserGuide. This extra `[ ]`, if added in suggestion (e.g. `[e/EMAIL]`), will mess with parsing of Autocomplete feature. (`[ ]` brackets in general do not affect parsing).**
 [↑ Back to top](#table-of-contents)
 
 
