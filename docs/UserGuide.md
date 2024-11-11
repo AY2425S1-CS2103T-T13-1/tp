@@ -150,23 +150,37 @@ These features aim to enhance the user's command entry experience, reduce the ne
 ---
 
 ### Suggestion Feature
+
 ![suggestion](images/Suggestion.png)
 
-> **Description**: As you begin typing a command, suggestions are displayed to provide context about the expected syntax. For example, if you start typing `add`, the suggestion will provide all required and optional parameters related to the `add` command.
+The application provides real-time command suggestions as you type:
+
+> **Description**: As you begin typing a command, suggestions are displayed in the background as grey text to provide context about the expected syntax. For example, if you start typing `add`, the suggestion will provide all required and optional parameters related to the `add` command.
 
 **Usage**:
-- As soon as you begin typing a valid command (e.g., `add`, `edit`, `find`), a suggestion will be displayed showing the entire command syntax.
-- If you make an incorrect entry (e.g., type `adding`), the suggestion will be hidden to indicate a problem with the syntax.
+1. As soon as you begin typing a valid command (e.g., `add`, `edit`, `find`), a suggestion will be displayed showing the entire command syntax.
+2. If you make an incorrect entry (e.g., type `adding` or `a d d`), the suggestion will be hidden to indicate a problem with the syntax.
+3. Once we enter the first command identifier (e.g. `n/`, `p/`), users are only suggested the first parameter to be entered (e.g. `NAME`, `PHONE`).
+4. Upon inputting relevant personal information, users are suggested the next command. (e.g. `p/PHONE`, `e/EMAIL`).
+5. INDEX and KEYWORD fields require users to input data (hence differing from original full syntax). This will intentionally halt suggestion features until a new command identifier is reached (e.g. `n/`, `p/`).
+6. If the INPUT has a prefix matching more than 1 command word (e.g., `del`), it will display all commands word (e.g., `delete...`, `deletearchive...`), seperated by a `|`.
+7. Suggestion feature keeps follows the default command syntax. We allow the commands to not be in order and still produce suggestions using a fixed order, based on the last ordered command (e.g. After `n/NAME`, even if you manually type `e/EMAIL`, the next suggested command is `p/PHONE`). However, users are to handle duplicate suggestions should they have already manually keyed another command earlier.
 
-**Example**:
-```
-add (n/NAME p/PHONE e/EMAIL a/ADDRESS ecname/EMERGENCY_CONTACT_NAME ...)
+**Example**: 
 
-add n/Saajid Shaik p/82617860 (e/EMAIL a/ADDRESS ecname/EMERGENCY_CONTACT_NAME ...)
+Format: INPUT → OUTPUT`SUGGESTION` (` →` indicates results in)
 
-where the words in brackets "()", are suggested by the system
-```
-This suggestion will be displayed as soon as you start typing `add`.
+1. ad → ad```d n/NAME p/PHONE e/EMAIL a/ADDRESS ecname/EMERGENCY_CONTACT_NAME ecphone/EMERGENCY_CONTACT_PHONE ecrs/EMERGENCY_CONTACT_RELATIONSHIP```
+2. adding → adding```(No suggestion)```
+   1. add lmao → add lmao```(No suggestion)```
+   2. a   d   d → a   d   d```(No suggestion)```
+3. add n/ → add n/```NAME```
+4. add n/Saajid Shaik → add n/Saajid Shaik```p/PHONE```
+5. delete 1 → delete 1```(No suggestion)```
+6.  del → del```ete INDEX [ec/EMERGENCY_CONTACT_INDEX] | deletearchive FILE_NAME```
+7. add n/Saajid Shaik ecname/Donald Trump → add n/Saajid Shaik ecname/Donald Trump```p/PHONE```
+
+>Do take note that any order of command identifier can be used when writing manually, as mentioned in [Features.](#features). This suggestion feature only suggest one of the many ways to write the command.<br> <br> We follow the default order just as how it is shown for each contact in our app.
 
 ### Autocomplete Feature
 ![Autocomplete demonstration](images/autocomplete.gif)
@@ -527,7 +541,6 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-3. **When typing commands in the CommandBox**, inserting a space, e.g. `he lp` in between `he` and `lp`, will cause the suggestion and autocorrection to bug out and display incorrectly.
 [↑ Back to top](#table-of-contents)
 
 

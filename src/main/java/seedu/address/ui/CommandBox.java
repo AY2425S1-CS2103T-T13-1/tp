@@ -48,16 +48,16 @@ public class CommandBox extends UiPart<Region> {
                 + "dname/DOCTOR_NAME dphone/DOCTOR_PHONE demail/DOCTOR_EMAIL t/TAG");
         commandSyntaxMap.put("addec", "addec ecname/EMERGENCY_CONTACT_NAME ecphone/EMERGENCY_CONTACT_PHONE "
                 + "ecrs/EMERGENCY_CONTACT_RELATIONSHIP");
-        commandSyntaxMap.put("archive", "archive [DESCRIPTION]");
+        commandSyntaxMap.put("archive", "archive DESCRIPTION");
         commandSyntaxMap.put("clear", "clear");
-        commandSyntaxMap.put("delete", "delete INDEX [ec/EMERGENCY_CONTACT_INDEX]");
+        commandSyntaxMap.put("delete", "delete INDEX ec/EMERGENCY_CONTACT_INDEX");
         commandSyntaxMap.put("edit", "edit INDEX n/NAME p/PHONE e/EMAIL a/ADDRESS ec/EMERGENCY_CONTACT_INDEX "
                 + "ecname/EMERGENCY_CONTACT_NAME ecrs/EMERGENCY_CONTACT_RELATIONSHIP dname/DOCTOR_NAME "
                 + "dphone/DOCTOR_PHONE demail/DOCTOR_EMAIL t/TAG");
-        commandSyntaxMap.put("find", "find KEYWORD [MORE_KEYWORDS]");
-        commandSyntaxMap.put("finddoc", "finddoc KEYWORD [MORE_KEYWORDS]");
+        commandSyntaxMap.put("find", "find KEYWORD MORE_KEYWORDS");
+        commandSyntaxMap.put("finddoc", "finddoc KEYWORD MORE_KEYWORDS");
         commandSyntaxMap.put("help", "help");
-        commandSyntaxMap.put("list", "list [SORT_ORDER]");
+        commandSyntaxMap.put("list", "list SORT_ORDER");
         commandSyntaxMap.put("listarchives", "listarchives");
         commandSyntaxMap.put("loadarchive", "loadarchive FILE_NAME");
         commandSyntaxMap.put("deletearchive", "deletearchive FILE_NAME");
@@ -157,7 +157,7 @@ public class CommandBox extends UiPart<Region> {
                 if (match.equals(input)) {
                     // Check if command requires INDEX
                     String syntax = commandSyntaxMap.get(match);
-                    if (syntax.contains("INDEX")) {
+                    if (syntax.contains("INDEX") || syntax.contains("KEYWORD")) {
                         commandTextField.setStyle(INPUT_NEEDED_STYLE);
                         return;
                     }
@@ -348,7 +348,7 @@ public class CommandBox extends UiPart<Region> {
             return;
         }
 
-        // New section for command suggestions - removed toLowerCase()
+        // For just the command (before any parameters)
         if (!input.contains(" ")) {
             StringBuilder suggestions = new StringBuilder();
             boolean foundMatch = false;
