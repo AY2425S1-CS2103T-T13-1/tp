@@ -54,7 +54,8 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "short-term stay";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PERSON =
+        "A person with the same phone number already exists in the address book";
 
     private final Person toAdd;
 

@@ -44,7 +44,7 @@ public class Messages {
         builder.append(emergencyContact.getName())
                 .append("; Phone: ")
                 .append(emergencyContact.getPhone())
-                .append("; Email: ")
+                .append("; Relationship: ")
                 .append(emergencyContact.getRelationship());
         return builder.toString();
     }

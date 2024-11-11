@@ -4,20 +4,21 @@ title: User Guide
 ---
 
 <div markdown="block" class="alert alert-warning">
-**:warning: Disclaimer**:
-<br>
-MedConnect is only designed to support the **English language** and for use in a **single timezone**.
-<br>
-Using MedConnect with other languages or across timezones may cause unexpected behaviour.
+
+**:warning: Disclaimer**
+
+The current version of MedConnect is only designed to support the **English language** and for use in a **single country and timezone**.
+
+Using MedConnect with other languages or across multiple countries and timezones may lead to unexpected behaviour.
 </div>
 <br>
-
-MedConnect is a **desktop app designed for healthcare administrators in elderly care homes for dementia patients**. This app consolidates crucial contact information into a single, accessible database, allowing administrative staff to manage patient and doctor contacts efficiently under high-pressure conditions.
+MedConnect is a **desktop app designed for healthcare administrators in elderly care homes for dementia patients**. It consolidates crucial contact information into a single, accessible database, allowing administrative staff to manage patient and doctor contacts efficiently under high-pressure conditions.
 
 MedConnect combines the speed of a Command Line Interface ([CLI](#cli)) with the visual clarity of a Graphical User Interface ([GUI](#gui)), making it ideal for administrators who can type fast and need rapid access to information. MedConnect can get your contact management tasks done faster than traditional [GUI](#gui) apps.
 
 With MedConnect, connecting with on-call doctors, family members, or other essential contacts becomes seamless, helping you respond quickly when every second counts.
 
+<div style="page-break-after: always;"></div>
 
 ## Table of Contents
 {:.no_toc}
@@ -25,7 +26,7 @@ With MedConnect, connecting with on-call doctors, family members, or other essen
 * Table of Contents
 {:toc}
 
----
+<div style="page-break-after: always;"></div>
 
 ## How to use this User Guide
 This User Guide is designed to help you understand and use MedConnect effectively. Here are some tips on how to navigate and use this guide:
@@ -40,23 +41,32 @@ This User Guide is designed to help you understand and use MedConnect effectivel
 
 By following these sections, you can quickly find the information you need and make the most out of MedConnect.
 
-## Quick start
+[↑ Back to top](#table-of-contents)
 
-1. Ensure you have Java `17` or above installed in your Computer.
+
+<div style="page-break-after: always;"></div>
+
+## Quick Start
+
+1. Ensure you have Java `17` or above installed on your computer.
    * You can check your Java version by following the instructions [here](https://www.wikihow.com/Check-Your-Java-Version-in-the-Windows-Command-Line).
-   * If you do not have Java `17` or above installed in your Computer, you can download Java from [here](https://www.oracle.com/java/technologies/downloads/#java17).
+   * If you do not have Java `17` or above installed in your computer, you can download Java from [here](https://www.oracle.com/java/technologies/downloads/#java17).
 
 2. Download the latest release of the `medconnect.jar` file from [here](https://github.com/AY2425S1-CS2103T-T13-1/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_. The _home folder_ will be where all the data files will be saved.
 
-4. *Windows:* Open the home folder and right click anywhere in the red box, as shown in the image below. Click "Open in Terminal". A terminal window will pop up, then type in the command `java -jar medconnect.jar` to run the application.<br><br>
-<img src="images/Quickstart-new-terminal.png" alt="New terminal on Windows"><br><br>
-*MacOS:* Right click home folder. Hover over "Services". Select "New Terminal at folder". A terminal window will pop up, then type in the command `java -jar medconnect.jar` to run the application.<br><br>
-   <img src="images/Quickstart-new-terminal-MacOS.png" alt="New terminal on MacOS">
+4. For *Windows:* Open the home folder and right-click anywhere in the red box, as shown in the image below. Click "Open in Terminal". A terminal window will pop up, then type in the command `java -jar medconnect.jar` to run the application.
 
-5. Type the command in the [command box](#command-box) and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+    <img src="images/Quickstart-new-terminal.png" alt="New terminal on Windows">
+   
+    <div style="page-break-after: always;"></div>
+   
+    For *MacOS:* Right-click home folder. Hover over "Services". Select "New Terminal at folder". A terminal window will pop up, then type in the command `java -jar medconnect.jar` to run the application.
+
+    <img src="images/Quickstart-new-terminal-MacOS.png" alt="New terminal on MacOS"> <br><br>
+
+5. Type the command in the [command box](#command-box) and press `Enter` to execute it. Here are some example commands you can try:
 
    * `list` : [List](#listing-all-persons--list) all contacts.
 
@@ -75,9 +85,9 @@ By following these sections, you can quickly find the information you need and m
 
 [↑ Back to top](#table-of-contents)
 
----
+<div style="page-break-after: always;"></div>
 
-## Quick Tutorial on MedConnect's [GUI](#gui)
+## Overview of [GUI](#gui)
 
 ![uitutorial](images/uitutorial.png)
 
@@ -108,6 +118,8 @@ By following these sections, you can quickly find the information you need and m
 
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ## Features
 
 <div markdown="block" class="alert alert-info">
@@ -117,17 +129,19 @@ By following these sections, you can quickly find the information you need and m
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
-* Items in square brackets `[ ] ` are optional.<br>
+* Items in square brackets `[ ]` are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
   * Please look at [known issues](#known-issues) for square brackets `[ ]` in general.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…` after them can be used multiple times.<br>
+  e.g. `[t/TAG]…` can be used as ` ` (i.e. not included), `t/friend`, `t/friend t/family` etc.
 
 * Items without `…`​ after them should not be inputted multiple times in the command.
 
-* Parameters can be in any order.<br>
+* Parameters can be in any order unless otherwise stated.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+
+* For a list of valid inputs for each parameter, please refer to the [Glossary](#glossary).
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -135,18 +149,13 @@ By following these sections, you can quickly find the information you need and m
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
----
+[↑ Back to top](#table-of-contents)
 
-### Suggestion and Autocomplete Feature
+<div style="page-break-after: always;"></div>
 
-### Overview
+### Suggestions and Autocompletion
 
-The CommandBox in the MedConnect application offers two major features to assist users while typing commands:
-
-- **Suggestion**: Provides visible hints about the expected command syntax as the user types.
-- **Autocomplete**: Helps complete partially typed commands when pressing the `Control` key.
-
-These features aim to enhance the user's command entry experience, reduce the need for memorizing syntax, and avoid typing errors.
+The Command Box in MedConnect offers **suggestions** and **autocompletion** to assist users while typing commands. These features aim to enhance the command entry experience through reducing the need for memorising command formats and reducing the chance of errors.
 
 ---
 
@@ -183,30 +192,23 @@ Format: INPUT → OUTPUT`SUGGESTION` (` →` indicates results in)
 
 >Do take note that any order of command identifier can be used when writing manually, as mentioned in [Features.](#features). This suggestion feature only suggest one of the many ways to write the command.<br> <br> We follow the default order just as how it is shown for each contact in our app.
 
-### Autocomplete Feature
+#### Autocompletion
+
+Autocompletion helps to complete partially typed commands by pressing the `Control` key.
+
+
 ![Autocomplete demonstration](images/autocomplete.gif)
 
-> **Description**: The Autocomplete feature allows the user to complete partially typed commands or parameters by pressing the `Control` key.
+* If an incorrect entry is detected (e.g., type `adding` instead of `add`), autocompletion will be disabled to indicate a problem with the format.
 
-**Usage**:
-- When a command is partially typed (e.g., `ad`), pressing `Control` will automatically complete it to the full command (`add`).
-- When the command word 'add' is typed, we move on to the slash commands where the autocompletes stops at the slash to allow users to type their personal details. E.g. `add` ->`add n/`
-- Autocomplete works for command words as well as parameters, helping you quickly complete complex entries without fully typing each part.
-- Autocomplete will only work if the input before pressing `Control` is a part of a valid command.
+**Examples**:
+* Typing `ad` followed by pressing `Control` autocompletes the input to `add`.
+* Typing `add` followed by pressing `Control` autocompletes the input to `add n/`.
+* Typing `add n/Saajid Shaik` followed by pressing `Control` autocompletes the input to `add n/Saajid Shaik p/`.
 
-Do take note, for commands like `delete index`, since index can be any number, there will be no autocomplete as there is no meaning to autocomplete the name "INDEX" itself.
-Other examples include `add n/` -> `add n/ p/` as there is no value in autocomplete the name "NAME" itself.
+[↑ Back to top](#table-of-contents)
 
-**Example**:
-- Type `add`, and then press `Control` to autocomplete `add n/`.
-- Type `add n/Saajid Shaik`, and then press `Control` to autocomplete `add n/Saajid Shaik p/`.
-
-### Additional Notes
-
-- **Incorrect Inputs**: If the input is incorrect or deviates from the expected syntax, suggestions will disappear, and autocomplete will not work. This helps users recognize mistakes early.
-- **Separation**: The suggestion is a passive visual cue, while autocomplete requires user action (pressing `Control`). Both features work together but serve different purposes.
-
----
+<div style="page-break-after: always;"></div>
 
 ### Viewing help : `help`
 
@@ -218,6 +220,7 @@ Format: `help`
 
 [↑ Back to top](#table-of-contents)
 
+
 ### Adding a patient: `add`
 
 Adds a patient to the address book.
@@ -225,29 +228,22 @@ Adds a patient to the address book.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ecname/EMERGENCY_CONTACT_NAME ecphone/EMERGENCY_CONTACT_PHONE
 ecrs/EMERGENCY_CONTACT_RELATIONSHIP dname/DOCTOR_NAME dphone/DOCTOR_PHONE demail/DOCTOR_EMAIL [t/TAG]…​`
 
-**Valid inputs**
-* Name, Email, Relationship: Refer to the [glossary](#glossary).
-* Phone: 
-  * Should only contain numbers, and it should be at least 3 digits long.
-  * Should not be the phone number of another patient in the patient list.
-* Address: Can be any value, but it cannot be blank.
-* Tags:
-    * Should only contain [alphanumeric](#glossary) characters, periods `.` or hyphens `-`.
-    * A patient can have any number of tags (including 0).
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+A patient can have any number of tags (including 0)
+</div>
 
-**Notes**
-* You need not add 'Dr' when typing `DOCTOR_NAME`. The app will automatically add `Dr` in front of `DOCTOR_NAME `. <br>
-* The maximum number of patient contacts in MedConnect is 2147483647. MedConnect will show unexpected behavior if it contains more than 2147483647 patient contacts.
-* A patient is considered a duplicate if it has the same `PHONE_NUMBER` as another patient.
+* You need not enter the prefix 'Dr' when typing `DOCTOR_NAME`. The app automatically adds the prefix `Dr` in front of the `DOCTOR_NAME` entered.
+* Patients with the same `PHONE_NUMBER` will be flagged as duplicates and cannot be added to the address book.
 
 **Examples**
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 ecname/Charlotte Lim ecphone/94681352 ecrs/daughter dname/Ronald Lee dphone/99441234 demail/ronaldlee@gmail.com`<br>
-Adds John Doe as a patient with his daughter Charlotte Lim as his emergency contact and Dr Ronald Lee as his assigned doctor.
+  Adds John Doe as a patient with his daughter Charlotte Lim as his emergency contact and Dr Ronald Lee as his assigned doctor.
 
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 ecrs/son ecphone/94873631 ecname/Bob Builder demail/liampayne@gmail.com dphone/91231231 dname/Liam Payne t/criminal` <br>
-Adds Betsy Crowe as a patient with her son Bob Builder as her emergency contact and Dr Liam Payne as her assigned doctor.
+  Adds Betsy Crowe as a patient with her son Bob Builder as her emergency contact and Dr Liam Payne as her assigned doctor.
 
 [↑ Back to top](#table-of-contents)
+
 
 ### Listing all patients : `list`
 
@@ -255,58 +251,49 @@ Shows a list of every patient in the address book.
 
 Format: `list [SORT_ORDER]`
 
-**Valid inputs**
-* Sort order:
-  * `timeadded`, `timeadded asc`, `timeadded desc`, `name`, `name asc`, `name desc`
+<div markdown="block" class="alert alert-info">
 
-**Notes**
+Valid inputs for sort order parameter: `timeadded`, `timeadded asc`, `timeadded desc`, `name`, `name asc`, `name desc`
+
+</div>
+
 * If `SORT_ORDER` is not provided, the patients listed will be sorted in the order they were added. The patient who was added the most recently will be at the bottom of the list.
-<br><br>
-* `timeadded`, `timeadded asc` and `timeadded desc` will sort the patient list according to the time they were added to Medconnect.
-* `timeadded` and `timeadded asc` will sort the patient list from least to most recently added. `timeadded desc` will sort the patient list from most to least recently added.
-<br><br>
-* `name`, `name asc` and `name desc` will sort the patient list according to their name in alphabetical order.
-* `name` and `name asc` will sort by the patients' names from A to Z. `name desc` will sort by the patients' names from Z to A.
+* `timeadded`, `timeadded asc` and `timeadded desc` sets the patient list to be sorted according to the time they were added to Medconnect. 
+  * `timeadded` and `timeadded asc` sorts the patient list from least to most recently added. 
+  * `timeadded desc` sorts the patient list from most to least recently added.
+* `name`, `name asc` and `name desc` sets the patient list to be sorted according to their name in alphabetical order. 
+  * `name` and `name asc` sorts by the patients' names from A to Z. 
+  * `name desc` sorts by the patients' names from Z to A.
 
 **Examples**
 * `list name asc`<br>
-Sorts the patient list in ascending alphabetical order of their names.
+  Sorts the patient list in ascending alphabetical order of their names.
 
 * `list timeadded desc`<br>
   Sorts the patient list in descending order of time added to MedConnect.
 
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### Editing a patient : `edit`
 
 Edits an existing patient in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ec/ECINDEX] [ecname/EMERGENCY_CONTACT_NAME] [ecphone/EMERGENCY_CONTACT_PHONE] [ecrs/EMERGENCY_CONTACT_RELATIONSHIP] [dname/DOCTOR_NAME] [dphone/DOCTOR_PHONE] [demail/DOCTOR_EMAIL] [t/TAG]…`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ec/EMERGENCY_CONTACT_INDEX] [ecname/EMERGENCY_CONTACT_NAME] [ecphone/EMERGENCY_CONTACT_PHONE] [ecrs/EMERGENCY_CONTACT_RELATIONSHIP] [dname/DOCTOR_NAME] [dphone/DOCTOR_PHONE] [demail/DOCTOR_EMAIL] [t/TAG]…`
 
-**Valid inputs**
-* Index: Refers to the index number shown in the patient list displayed. Must be a positive integer that is at most 2147483647.
-* Emergency contact index: Refers to the index number of the emergency contact listed under a patient in the displayed patient list. Must be a positive integer that is at most 2147483647.
-* Name, Email, Relationship: Refer to the [glossary](#glossary).
-* Phone: Should only contain numbers, and it should be at least 3 digits long.
-* Address: Can be any value, but it cannot be blank.
-* Tags:
-    * Should only contain [alphanumeric](#glossary) characters, periods `.` or hyphens `-`.
-    * A person can have any number of tags (including 0).
-
-**Notes**
-  * Edits the patient at the specified `INDEX`. Existing values will be updated to the input values.
-  * At least one of the optional fields must be provided.
-
-**Notes on editing emergency contacts**
-  * When editing an emergency contact, the index of the emergency contact to edit and at least one emergency contact field must be provided
-  * When editing tags, all the existing tags of the person will be removed. You will have to re-enter pre-existing tags if you wish to preserve them.
-  * You can remove all of a person’s existing tags by typing `t/` without specifying any tags after it.
-  * An emergency contact is considered a duplicate if it has the same `EMERGENCY_CONTACT_PHONE` as another emergency contact.
-  You should not edit an emergency contact to have the same phone number as another emergency contact of the same patient to prevent unexpected app behavior.
-  * If you edit an emergency contact to have the same name, phone and relationship as another emergency contact of the same patient, this is considered a duplicate emergency contact and will be automatically removed from the list.
+* Edits the patient at the specified `INDEX`. Existing values will be updated to the input values.
+* `INDEX` should come before any of the optional fields.
+* At least one of the optional fields must be provided.
+* To edit the patient's emergency contact, the index of the emergency contact to edit with `ec/EMERGENCY_CONTACT_INDEX` and provide at least one of the emergency contact fields.
+* When editing tags, all the existing tags of the person will be removed. You will have to re-enter pre-existing tags if you wish to preserve them.
+* You can remove all of a person’s existing tags by typing `t/` without specifying any tags after it.
+* An emergency contact is considered a duplicate if it has the same `EMERGENCY_CONTACT_PHONE` as another emergency contact.
+You should not edit an emergency contact to have the same phone number as another emergency contact of the same patient to prevent unexpected app behavior.
+* If you edit an emergency contact to have the same name, phone and relationship as another emergency contact of the same patient, this is considered a duplicate emergency contact and will be automatically removed from the list.
 
 **Examples:**
-*  `edit 1 p/91234567 e/johndoe@example.com`<br> 
+*  `edit 1 p/91234567 e/johndoe@example.com`<br>
 Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
 
 *  `edit 2 n/Betsy Crower t/`<br>
@@ -317,15 +304,14 @@ Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing t
 
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### Locating patients by patient's name: `find`
 
 Finds persons patients names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-**Valid inputs**
-
-**Notes**
 * **Only the patient's name is searched.**
 * The search is case-insensitive. (e.g `hans` will match `Hans`)
 * The order of the keywords does not matter. (e.g. `Hans Bo` will match `Bo Hans`)
@@ -335,11 +321,13 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find Alex` displays`Alex Yeoh` and `Alexis Tan`
-* `find dav Roy` displays `David Li` and `Roy Balakrishnan`<br><br>
-  ![result for 'find dav roy'](images/findDavRoyResult.png){: width="250"}
-Entering the command `find dav Roy` displays the above list, finding David Li and Roy Balakrishnan.
+* `find dav Roy` displays `David Li` and `Roy Balakrishnan`
+
+  ![result for 'find dav roy'](images/findDavRoyResult.png){: width="400"}
 
 [↑ Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### Locating patients by doctor's name: `finddoc`
 
@@ -347,7 +335,6 @@ Finds patients by checking if their doctor's names contain any of the provided k
 
 Format: `finddoc KEYWORD [MORE_KEYWORDS]`
 
-**Notes**
 * **Only the doctor's name is searched.**
 * The search is case-insensitive. (e.g `hans` will match `Hans`)
 * The order of the keywords does not matter. (e.g. `Hans Bo` will match `Bo Hans`)
@@ -356,11 +343,14 @@ Format: `finddoc KEYWORD [MORE_KEYWORDS]`
 
 **Examples:**
 * `finddoc John` returns persons with doctors `john` and `John Doe`
-* `finddoc tan ed` returns persons with doctors `Tan Wei Ming`, `Ed Sheeran`<br><br>
-  ![result for 'finddoc zhou'](images/finddocZhouResult.png){width="250"}<br>
-Entering the command `finddoc zhou` returns the above result of Irfan Ibrahim since Dr Zhou Jie Lun is his assigned doctor.
+* `finddoc tan ed` returns persons with doctors `Tan Wei Ming`, `Ed Sheeran`
+* `findoc zhou` returns `Irfan Ibrahim` since `Dr Zhou Jie Lun` is his assigned doctor.
+
+  ![result for 'finddoc zhou'](images/finddocZhouResult.png)
 
 [↑ Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### Deleting a person : `delete`
 
@@ -368,14 +358,8 @@ Deletes the specified patient or emergency contact from the address book.
 
 Format: `delete INDEX [ec/EMERGENCY_CONTACT_INDEX]`
 
-**Valid inputs**
-* Index:
-  * **Must be a positive integer** 1, 2, 3, …​
-  * It is at most 2147483647.
-
-**Notes**
 * Deletes the patient at the specified `INDEX` **OR** deletes the emergency contact at the specified `EMERGENCY_CONTACT_INDEX` of the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* `INDEX` refers to the index number shown in the displayed person list.
 * The parameters **must** follow the order given above.
 * Each patient must have at least one emergency contact. You cannot delete the final emergency contact in the list.
 
@@ -386,23 +370,22 @@ Format: `delete INDEX [ec/EMERGENCY_CONTACT_INDEX]`
 
 [↑ Back to top](#table-of-contents)
 
+
 ### Adding an emergency contact : `addec`
 
 Adds an emergency contact to a specified patient in the address book.
 
 Format: `addec INDEX ecname/EMERGENCY_CONTACT_NAME ecphone/EMERGENCY_CONTACT_PHONE ecrs/EMERGENCY_CONTACT_RELATIONSHIP`
 
-**Valid inputs**
-* Relationship: Refer to the [glossary](#glossary).
-
-**Notes**
-* You cannot add emergency contacts that have the same phone number as another emergency contact of the patient.
+* A patient cannot have more than one emergency contact with the same phone number.
 
 **Examples**
 * `addec 1 ecname/Shannon Wong ecphone/84651325 ecrs/Daughter`<br>
 Adds a new emergency contact Shannon Wong to the 1st patient in the address book.
 
 [↑ Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### Archiving data files: `archive`
 
@@ -411,16 +394,15 @@ Archives the current address book data to a timestamped data file with an option
 Format: `archive [DESCRIPTION]`
 
 **Valid inputs**
-* Description: Must be a valid file name (i.e., it cannot contain any of the following special characters: `\/:*?"<>|`).
-
-**Notes**
+* `DESCRIPTION` must be a valid file name (i.e., it cannot contain any of the following special characters: `\/:*?"<>|`).
 * The archive data file will be saved as a [JSON file](#glossary) in the `[home folder]/data/archive/` folder.
 
 **Examples**
 * `archive` Archives the current address book data to a timestamped data file.
-* `archive "before major update"`<br>Archives the current address book data to a timestamped data file with the description "before major update".
+* `archive before major update` <br> Archives the current address book data to a timestamped data file with the description "before major update".
 
 [↑ Back to top](#table-of-contents)
+
 
 ### Listing all archived data files: `listarchives`
 
@@ -430,16 +412,15 @@ Format: `listarchives`
 
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### Loading data from an archived data file: `loadarchive`
 
 Loads the data from an archived data file into the address book.
 
 Format: `loadarchive FILE_NAME`
 
-**Valid inputs**
-* `FILE_NAME`: Must be the name of an archived data file in the archive folder.
-
-**Notes**
+* `FILE_NAME` should be the name of an archived data file in the archive folder. You can view a list of archived data files using the [`listarchives`](#listing-all-archived-data-files-listarchives) command.
 * The data from the archived file will replace the current data in the address book.
 * The data in the archived file will not be deleted.
 
@@ -448,10 +429,11 @@ Did you accidentally load an archive and want your old data back? Enter the 'und
 </div>
 
 **Examples**
-* `loadarchive addressbook-2024-11-06T20-29-05.7609475-example.json` Loads the data from the archived file named `addressbook-2024-11-06T20-29-05.7609475-example.json` into the address book.
-
+* `loadarchive addressbook-2024-11-06T20-29-05.7609475-example.json` <br> Loads the data from the archived file named `addressbook-2024-11-06T20-29-05.7609475-example.json` into the address book.
 
 [↑ Back to top](#table-of-contents)
+
+<div style="page-break-after: always;"></div>
 
 ### Deleting an archived data file: `deletearchive`
 
@@ -463,13 +445,13 @@ Deletes the data of an existing archived data file in the archive folder.
 
 Format: `deletearchive FILE_NAME`
 
-**Notes**
-* `FILE_NAME` must be the name of an archived data file in the archive folder.
+* `FILE_NAME` should be the name of an archived data file in the archive folder. You can view a list of archived data files using the [`listarchives`](#listing-all-archived-data-files-listarchives) command.
 
 **Examples**
-* `deletearchive addressbook-20241023_114324-example.json` Deletes the archived file with the file name `addressbook-20241023_114324-example.json`.
+* `deletearchive addressbook-2024-11-06T20-29-05.7609475-example.json` Deletes the archived file with the file name `addressbook-2024-11-06T20-29-05.7609475-example.json`.
 
 [↑ Back to top](#table-of-contents)
+
 
 ### Clearing all entries : `clear`
 
@@ -479,8 +461,10 @@ Format: `clear`
 
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### Undoing previous command : `undo`
-Restores the previous state of the address book after any change, such as an addition, edit, or deletion of a person or entry.
+Restores the previous state of the address book after any change, such as an addition, edit, or deletion of a patient.
 
 Format: `undo`
 
@@ -490,13 +474,19 @@ An action cannot be undone once you close the MedConnect application.
 
 [↑ Back to top](#table-of-contents)
 
+
 ### Redoing previous command : `redo`
 
-Restores the state of the address book **after an undo operation has been executed**, effectively "redoing" the undone changes, such as an addition, edit, or deletion of a person or entry.
+Restores the state of the address book **after an undo operation has been executed**, effectively "redoing" the undone changes, such as an addition, edit, or deletion of a patient.
 
 Format: `redo`
 
+<div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
+An action cannot be redone once you close the MedConnect application.
+</div>
+
 [↑ Back to top](#table-of-contents)
+
 
 ### Exiting the program : `exit`
 
@@ -506,9 +496,14 @@ Format: `exit`
 
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+[↑ Back to top](#table-of-contents)
+
 
 ### Editing the data file
 
@@ -524,7 +519,7 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 [↑ Back to top](#table-of-contents)
 
----
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -536,18 +531,25 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 [↑ Back to top](#table-of-contents)
 
----
-
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-3. **Square brackets to indicate a command is optional is not displayed in suggestion feature. Users need to refer to HelpGuide or UserGuide. This extra `[ ]`, if added in suggestion (e.g. `[e/EMAIL]`), will mess with parsing of Autocomplete feature. (`[ ]` brackets in general do not affect parsing).**
+1. When using multiple screens, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+
+2. If you minimize the Help Window and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
+3. When typing commands in the CommandBox, inserting a space, e.g. `he lp` in between `he` and `lp`, will cause the suggestion and autocorrection to bug out and display incorrectly.
+
+4. MedConnect supports up to 2,147,483,647 patient contacts. Attempting to add or edit more than this number of contacts may result in unexpected behaviour.
+
+5. Square brackets to indicate a command is optional is not displayed in suggestion feature. Users need to refer to HelpGuide or UserGuide. This extra `[ ]`, if added in suggestion (e.g. `[e/EMAIL]`), will mess with parsing of Autocomplete feature. (`[ ]` brackets in general do not affect parsing).
+
+
 [↑ Back to top](#table-of-contents)
 
+<div style="page-break-after: always;"></div>
 
 ## Glossary
-**Terminology**
+### Terminology
 
 | Term                                               | Details                                                                                                                                                                                                                                                                        | Example                                                                                                                                                                                                                                              |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -558,20 +560,30 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | **Keyword**                                        | The word you want to search for in a `find` or `finddoc` command.                                                                                                                                                                                                              | Searching for a patient named Bernice Yu could be done by using keywords `Bern` or `Yu`.                                                                                                                                                             |
 | **Parameter**                                      | Information that you are required to provide to the MedConnect command.                                                                                                                                                                                                        | `NAME` and `EMAIL` are examples of parameters you have to provide in an [`add`](#adding-a-person-add) command.<br><br>`Paul` and `paul@gmail.com` are possible examples to provide to the respective parameters.                                     |
 
-**Valid inputs**
+<div style="page-break-after: always;"></div>
 
-| Parameter                                  | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                              |
-|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **`demail/` DOCTOR_EMAIL**                 | Refer to `email/` below.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                      |
-| **`dname/` DOCTOR_NAME**                   | Refer to `name/` below.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                      |
-| **`ecname/` EMERGENCY_CONTACT_NAME**       | Refer to `name/` below.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                      |
-| **`ecrs/` EMERGENCY_CONTACT_RELATIONSHIP** | This parameter accepts the following valid inputs:<br/>`Parent, Mother, Father, Child, Son, Daughter, Sibling, Brother, Sister, Friend, Spouse, Husband, Wife, Partner, Cousin, Relative, Uncle, Aunt, Grandparent, Grandmother, Grandfather, Grandchild, Grandson, Granddaughter`. It is case-insensitive.                                                                                                                                                                                                                                                                                                                                                                           | `Spouse` and `GRANDcHILD` are examples of relationships you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `ecrs/` parameter.                                                                                                                                          |
-| **`email/` EMAIL<br/>**                    | Emails should be of the format local-part@domain and adhere to the following constraints:<br/>1. The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-)). The local-part may not start or end with any special characters.<br/>2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods. The domain name must:<br/>- end with a domain label at least 2 characters long<br/>- have each domain label start and end with alphanumeric characters<br/> - have each domain label consist of alphanumeric characters, separated only by hyphens, if any. | `johndoe@gmail.com` and `janedoe@hotmail.com` are examples of emails you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `email/` parameter.                                                                                                                            |
-| **`name/` NAME**                           | This parameter accepts alphanumeric characters, the words `s/o`, `d/o`, and the following characters: `-`, `.`, `(`, `)`, `@`, `/`, `'`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `Connor T'Challa`, `Vika d/o Rajesh`, `Amir Fakri @ Ahmad` and `Buddy (Charles) Baxter` are examples of names you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `ecname/` paramter.<br/>`Buddy/Charles` is an example of an invalid input to the `ecname/` parameter. |
+### Valid Inputs for Patient parameters
+
+A person is uniquely identified by their `PHONE_NUMBER`. Persons with the same `PHONE_NUMBER` will be flagged as duplicates and cannot be added to the address book.
+
+| Parameter                                         | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                                  |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`name/` NAME**                                  | This parameter accepts alphanumeric characters, the words `s/o`, `d/o`, and the following characters: `-`, `.`, `(`, `)`, `@`, `/`, `'`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `Connor T'Challa`, `Vika d/o Rajesh`, `Amir Fakri @ Ahmad` and `Buddy (Charles) Baxter` are examples of names you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `name/` paramter. <br/> <br/> `Buddy/Charles` is an example of an invalid input to the `name/` parameter. |
+| **`phone/` PHONE_NUMBER**                         | Phone numbers should only contain numbers and be at least 3 digits long.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `91234567` and `98765432` are examples of phone numbers you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `phone/` parameter.                                                                                                                                             |
+| **`email/` EMAIL**                                | Emails should be of the format `local-part@domain` and adhere to the following constraints: <br/> 1. `local-part` should only contain alphanumeric characters and these special characters, excluding the parentheses, (+_.-). The local-part may not start or end with any special characters. <br/> 2. This is followed by a `@` and then a domain name for `domain`. The domain name is made up of domain labels separated by periods. The domain name must:<br/>- end with a domain label at least 2 characters long<br/>- have each domain label start and end with alphanumeric characters<br/> - have each domain label consist of alphanumeric characters, separated only by hyphens, if any. | `johndoe@gmail.com` and `janedoe@hotmail.com` are examples of emails you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `email/` parameter.                                                                                                                                |
+| **`address/` ADDRESS**                            | Addresses can be any value, but they cannot be blank.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `123, Clementi Rd, 123465` and `Block 123, Jurong West Street 6, #08-111` are examples of addresses you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `address/` parameter.                                                                                               |
+| **`ecname/` EMERGENCY_CONTACT_<br>NAME**          | Refer to `name/` above.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                          |
+| **`ecphone/` EMERGENCY_CONTACT_<br>PHONE_NUMBER** | Refer to `phone/` above.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                          |
+| **`ecrs/` EMERGENCY_CONTACT_<br>RELATIONSHIP**    | This parameter accepts the following valid inputs:<br/>`Parent, Mother, Father, Child, Son, Daughter, Sibling, Brother, Sister, Friend, Spouse, Husband, Wife, Partner, Cousin, Relative, Uncle, Aunt, Grandparent, Grandmother, Grandfather, Grandchild, Grandson, Granddaughter`. <br/> It is case-insensitive.                                                                                                                                                                                                                                                                                                                                                                                     | `Spouse` and `GRANDcHILD` are examples of relationships you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `ecrs/` parameter.                                                                                                                                              |
+| **`dname/` DOCTOR_NAME**                          | Refer to `name/` above.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                          |
+| **`demail/` DOCTOR_EMAIL**                        | Refer to `email/` above.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                          |
+| **`dphone/` DOCTOR_PHONE**                        | Refer to `phone/` above.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                          |
+| **`t/` TAG**                                      | Tags should only contain alphanumeric characters, spaces, periods `.` or hyphens `-`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `Mandarin-speaking`, `short-term patient`  are examples of tags you can provide in an [`add`](#adding-a-person-add), [`edit`](#editing-a-person--edit) or [`addec`](#adding-an-emergency-contact--addec) command `t/` parameter.                                                                                                                                         |
 
 [↑ Back to top](#table-of-contents)
 
----
+<div style="page-break-after: always;"></div>
+
 ## Command summary
 
 | Action                    | Format, Examples                                                                                                                                                                                                                                                                                                                                                                         |

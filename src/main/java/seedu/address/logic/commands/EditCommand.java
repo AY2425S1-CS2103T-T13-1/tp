@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.AddEmergencyContactCommand.MESSAGE_DUPLICATE_EMERGENCY_CONTACT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DOC_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DOC_NAME;
@@ -71,7 +72,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON =
+        "A person with the same phone number already exists in the address book.";
     public static final String MESSAGE_EMERGENCY_CONTACT_NOT_EDITED = "At least one emergency contact field to edit "
             + "must be provided.";
     public static final String MESSAGE_EMERGENCY_CONTACT_FIELDS_INVALID = "At least one emergency contact index to "
@@ -116,6 +118,9 @@ public class EditCommand extends Command {
             EmergencyContact updatedEmergencyContact =
                     createEditedEmergencyContact(emergencyContactToUpdate, editPersonDescriptor);
 
+            if (personToEdit.hasEmergencyContact(updatedEmergencyContact)) {
+                throw new CommandException(MESSAGE_DUPLICATE_EMERGENCY_CONTACT);
+            }
             updatedEmergencyContacts =
                     updateEmergencyContacts(personEmergencyContacts, updatedEmergencyContact, index);
         } else {

@@ -28,7 +28,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_ECNAME = "Sarah Lim";
-    public static final String DEFAULT_ECPHONE = "98761234";
+    public static final String DEFAULT_ECPHONE = "85541325";
     public static final String DEFAULT_ECRS = "Parent";
     public static final String DEFAULT_DOC_NAME = "John Doe";
     public static final String DEFAULT_DOC_PHONE = "98927134";

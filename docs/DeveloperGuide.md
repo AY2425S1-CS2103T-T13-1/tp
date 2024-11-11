@@ -367,7 +367,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | healthcare administrator | sort patients by their admission time    | provide appropriate care to longer-term patients                             |
 | `* *`    | healthcare administrator | tag important notes to patients          | remember special considerations about certain patients                       |
 | `* *`    | healthcare administrator | archive outdated contacts                | maintain a clean and relevant contact list without losing historical records |
-| `* *`    | healthcare administrator | load backup archived data                | maintain a backup copy in case of data corruption or user error              |
+| `* *`    | healthcare administrator | load backup archived data                | restore a backup copy in case of data corruption or user error              |
 
 ### Advanced User Stories
 
